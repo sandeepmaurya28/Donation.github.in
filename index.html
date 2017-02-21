@@ -117,6 +117,11 @@
                   current=parseInt(current);
               var input=$("#inputValue").val();
                   input=parseInt(input);
+                   var check =localStorage.getItem("Remaining");
+                        check=parseInt(check);
+              if(input>check){
+                  input=check;
+              }
               var max=localStorage.getItem("max");
                   max=parseInt(max);
                var    currentValue=current+input;
@@ -163,9 +168,15 @@
                   $(".progress-bar").css("width",parseFloat(localStorage.getItem("percent"))+"%");
 
                  $(".give-now").on("click",function () {
+
                        var dollar=document.getElementById("inputValue").value;
                            dollar=parseInt(dollar);
+                     var amount=localStorage.getItem("currentProgress");
+                         amount=parseInt(amount);
+                           if(amount>=1000){
 
+                               return false;
+                           }
 
                         if(dollar<0){
                             alert("You Could not Donate This Amount");
